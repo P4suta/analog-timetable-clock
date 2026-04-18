@@ -79,3 +79,7 @@ bun run build     # static 出力 (build/)
 
 Pages は `https://<user>.github.io/analog-timetable-clock/` で公開される。
 `BASE_PATH` は `actions/configure-pages` が自動注入。
+
+## ライセンス
+
+[MIT License](./LICENSE)
