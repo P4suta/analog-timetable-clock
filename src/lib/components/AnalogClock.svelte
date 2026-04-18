@@ -244,7 +244,9 @@
 		{/each}
 	</g>
 
-	<!-- 針 -->
+	<!-- 針：時針 → 分針 → 白ピボット → 秒針 → 赤ドット の順で重ねる。
+	     白ピボットで時針・分針の交差を隠し、その上を秒針（赤）が横切ることで、
+	     白リングが秒針の赤線で割られて中心の赤ドットに連続して見える構造。 -->
 	<g class="hands">
 		<!-- 時針 -->
 		<line
@@ -270,7 +272,9 @@
 			transform="rotate({minuteAngle} {CX} {CY})"
 			class="hand hand-minute"
 		/>
-		<!-- 秒針 -->
+		<!-- 白ピボット：時針・分針の根本を覆い隠すキャップ。秒針より下に描く。 -->
+		<circle cx={CX} cy={CY} r="7" fill="var(--color-pivot)" />
+		<!-- 秒針：ピボットの上に描画。赤い線が白リングを貫通し、中心の赤ドットまで連続する。 -->
 		<line
 			x1={CX}
 			y1={CY + R_SECOND_TAIL}
@@ -282,8 +286,7 @@
 			transform="rotate({secondAngle} {CX} {CY})"
 			class="hand hand-second"
 		/>
-		<!-- 中心ピボット -->
-		<circle cx={CX} cy={CY} r="7" fill="var(--color-pivot)" />
+		<!-- 秒針の軸を示す赤ドット：秒針と同色で中心に連続して見える。 -->
 		<circle cx={CX} cy={CY} r="3" fill="var(--color-hand-second)" />
 	</g>
 </svg>
