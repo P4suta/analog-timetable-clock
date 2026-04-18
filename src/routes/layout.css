@@ -1,0 +1,62 @@
+@import "tailwindcss";
+
+@theme {
+	--color-bg: #0f1220;
+	--color-surface: #161a2e;
+	--color-fg: #e8ecf7;
+	--color-fg-muted: rgba(232, 236, 247, 0.72);
+	--color-fg-subtle: rgba(232, 236, 247, 0.48);
+
+	--color-face: #1b1f36;
+	--color-face-ring: #2a2e42;
+	--color-tick: rgba(232, 236, 247, 0.55);
+	--color-tick-major: rgba(232, 236, 247, 0.85);
+
+	--color-hand-hour: #e8ecf7;
+	--color-hand-minute: #e8ecf7;
+	--color-hand-second: #ff5a5f;
+	--color-pivot: #e8ecf7;
+
+	/* period arcs — 1限〜6限の青系グラデと 昼休みの暖色 */
+	--color-p1: #5ea8ff;
+	--color-p2: #4a90e2;
+	--color-p3: #3b7dd8;
+	--color-p4: #2c6bcf;
+	--color-p5: #2458ad;
+	--color-p6: #1d4485;
+	--color-lunch: #f5a623;
+
+	--color-active: #ffffff;
+	--color-active-shadow: rgba(255, 255, 255, 0.8);
+
+	/* ──── Mission Control palette ──── */
+	--mc-accent: #ff2e4a; /* Active / ALERT 赤 */
+	--mc-accent-bright: #ff5a78; /* グラデ用明るい赤 */
+	--mc-accent-dim: rgba(255, 46, 74, 0.25);
+	--mc-accent-glow: rgba(255, 46, 74, 0.7);
+	--mc-complete: #00d37f; /* COMPLETE 緑 */
+	--mc-complete-glow: rgba(0, 211, 127, 0.55);
+	--mc-telemetry: #40d0ff; /* テレメトリ数値・ラベル用 シアン */
+	--mc-telemetry-dim: rgba(64, 208, 255, 0.55);
+	--mc-warning: #ffb800; /* T- < 60s 時のカウントダウン注意色 */
+
+	--font-sans:
+		system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI Variable",
+		"Segoe UI", "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Noto Sans JP",
+		"Yu Gothic", "Meiryo", sans-serif;
+	--font-mono:
+		ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono",
+		monospace;
+}
+
+html,
+body {
+	background: var(--color-bg);
+	color: var(--color-fg);
+	font-family: var(--font-sans);
+}
+
+body {
+	min-height: 100vh;
+	-webkit-font-smoothing: antialiased;
+}
