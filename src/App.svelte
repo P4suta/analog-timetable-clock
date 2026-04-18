@@ -8,6 +8,8 @@
 	import { timeStore } from "$lib/time.svelte";
 
 	// DevPanel は dev ビルドでのみ dynamic-import される。
+	// `import.meta.env.DEV` が本番ビルド時に false に置換され、
+	// rollup/rolldown が import() 呼び出しごと DevPanel チャンクを落とす。
 	let DevPanel = $state<Component | null>(null);
 	if (import.meta.env.DEV) {
 		import("$lib/components/DevPanel.svelte").then((m) => {
@@ -164,7 +166,6 @@
 	/* ─── 広い画面：2 カラム並列（平日）⇔ 1 カラム（土日）を滑らかに遷移 ─── */
 	@media (min-width: 980px) {
 		.dashboard {
-			/* デフォルト（土日）: 右カラムを 0 に畳んで時計が全幅を占める */
 			grid-template-columns: 1fr 0fr;
 			gap: 0;
 			justify-items: stretch;

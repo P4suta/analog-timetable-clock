@@ -16,7 +16,6 @@ RUN --mount=type=cache,target=/root/.bun/install/cache \
 
 FROM deps AS source
 COPY . .
-RUN bun run prepare
 
 FROM source AS check
 RUN bun run check
@@ -33,8 +32,8 @@ ENV BASE_PATH=${BASE_PATH}
 RUN bun run build
 
 # build 成果物だけを取り出すための scratch stage。
-# `docker buildx build --target build-output --output type=local,dest=./build .`
-# でホストの ./build に SvelteKit static 出力をエクスポートできる。
+# `docker buildx build --target build-output --output type=local,dest=./dist .`
+# でホストの ./dist に Vite の静的出力をエクスポートできる。
 # GitHub Actions の Pages デプロイもこの target を使う。
 FROM scratch AS build-output
-COPY --from=build /app/build /
+COPY --from=build /app/dist /

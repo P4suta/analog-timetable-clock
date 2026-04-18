@@ -23,13 +23,28 @@
 
 ## 構成
 
-- **SvelteKit** + `@sveltejs/adapter-static` で完全な静的サイト
+- **Vite** (`rolldown-vite` の npm alias) — Rust 製 Rolldown バンドラで
+  prod ビルド
 - **Svelte 5 runes** (`$state`, `$derived`, `$effect`)
 - **TypeScript** strict + `noUncheckedIndexedAccess`
 - **Tailwind CSS v4** (`@tailwindcss/vite`) + CSS 変数でテーマトークン
 - **Biome** で lint と format
 - **Vitest** でロジックテスト
 - **bun** をパッケージマネージャに使用
+
+単一ルートのフル client-side SPA。SSR もルーターも使わないので、
+フレームワーク層を剥がして **`index.html` + `main.ts` + `App.svelte`** の
+最小構成で静的ファイルに書き出す。
+
+## プライバシー
+
+**ユーザーデータを一切保存しない。**
+
+- `localStorage` / `sessionStorage` / `document.cookie` / `indexedDB`
+  への参照が **本番バンドルからゼロ** (`dist/` を grep 済)
+- 外部ネットワーク呼び出しなし（Web フォントもシステムフォント使用）
+- 解析・トラッキング・広告スクリプトなし
+- GitHub Pages からの静的配信のみ
 
 ## ローカル開発
 
@@ -57,8 +72,9 @@ Dockerfile は multi-target で `check` / `lint` / `test` / `build` /
 ### 本番ビルド
 
 ```sh
-bun run build                 # ルート配信
+bun run build                  # ルート配信（dist/）
 BASE_PATH=/myapp bun run build # サブパス配信（GitHub Pages 等）
+bun run preview                # ビルド成果物のプレビュー
 ```
 
 ## 検証

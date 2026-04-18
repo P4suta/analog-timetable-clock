@@ -13,7 +13,6 @@ x-app: &app
   volumes:
     - .:/app
     - node_modules:/app/node_modules
-    - svelte_kit:/app/.svelte-kit
 
 services:
   dev:
@@ -42,4 +41,3 @@ services:
 
 volumes:
   node_modules:
-  svelte_kit:

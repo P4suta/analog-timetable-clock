@@ -2,13 +2,7 @@
 	"$schema": "https://biomejs.dev/schemas/2.4.12/schema.json",
 	"files": {
 		"ignoreUnknown": true,
-		"includes": [
-			"**",
-			"!**/.svelte-kit",
-			"!**/build",
-			"!**/node_modules",
-			"!**/*.svelte"
-		]
+		"includes": ["**", "!**/dist", "!**/node_modules", "!**/*.svelte"]
 	},
 	"formatter": {
 		"enabled": true,

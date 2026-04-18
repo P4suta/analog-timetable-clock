@@ -59,4 +59,5 @@ body {
 body {
 	min-height: 100vh;
 	-webkit-font-smoothing: antialiased;
+	margin: 0;
 }
